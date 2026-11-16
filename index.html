@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceSense AI | Emotion Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✦</span> FaceSense <span class="brand-ai">AI</span></a>
+    <div class="top-status"><span class="pulse"></span> LOCAL AI STUDIO</div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow"><span></span> COMPUTER VISION EXPERIENCE</div>
+      <h1>Understand the <span>expression.</span></h1>
+      <p class="subhead">A live facial-expression demo powered by AI. Start your camera and see the model's estimate update in real time.</p>
+    </section>
+
+    <section class="workspace">
+      <article class="panel camera-panel">
+        <div class="panel-heading">
+          <div><p class="mini-label">LIVE CAMERA</p><h2>Expression capture</h2></div>
+          <div class="live-tag"><span class="pulse"></span> LIVE VIEW</div>
+        </div>
+        <div class="camera-stage" id="cameraStage">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="captureCanvas" hidden></canvas>
+          <div class="camera-placeholder" id="placeholder">
+            <div class="camera-icon">◎</div>
+            <h3>Your camera preview</h3>
+            <p>Allow camera access to begin the experience.</p>
+          </div>
+          <div class="scan-frame" id="scanFrame"><i></i><i></i><i></i><i></i></div>
+          <div class="camera-overlay"><span>● CAMERA FEED</span><span id="feedState">STANDBY</span></div>
+        </div>
+        <div class="camera-actions">
+          <button class="primary-btn" id="startBtn"> <span>▶</span> Start camera</button>
+          <button class="secondary-btn" id="stopBtn" disabled>Stop</button>
+        </div>
+        <p class="privacy-note">🔒 Camera frames are sent to your local Python server for analysis and are not saved by this demo.</p>
+      </article>
+
+      <aside class="panel results-panel">
+        <div class="panel-heading"><div><p class="mini-label">AI ANALYSIS</p><h2>Emotion insight</h2></div><span class="sparkle">✧</span></div>
+        <div class="emotion-result">
+          <div class="emotion-orb" id="emotionOrb"><span id="emotionEmoji">✦</span></div>
+          <p class="result-caption">DOMINANT EXPRESSION</p>
+          <h3 id="dominantEmotion">Waiting for camera</h3>
+          <p class="result-hint" id="resultHint">Start the camera to receive an AI estimate.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="scores-heading"><h3>Expression scores</h3><span>MODEL OUTPUT</span></div>
+        <div class="score-list" id="scoreList">
+          <div class="empty-score">Your emotion scores will appear here.</div>
+        </div>
+        <div class="analysis-footer"><span class="pulse"></span><span id="analysisStatus">AI engine is idle</span></div>
+      </aside>
+    </section>
+    <section class="disclaimer"><strong>Important:</strong> This is an experimental facial-expression classifier. It estimates visible expression patterns, not a person's true feelings, personality, or mental state. Results can be inaccurate and may vary with lighting, pose, and camera quality.</section>
+    <footer>FACESENSE AI <span>•</span> STUDENT PROJECT DEMO</footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
